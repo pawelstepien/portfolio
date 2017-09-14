@@ -11127,6 +11127,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var scroll = _reactScroll2.default.animateScroll;
 
+var portfolioData = [{ header: "Tetris", imgUrl: "./img/portfolio/tetris/screen.png", description: "Gra Tetris. Użyte technologie: JavaScript ES6, Canvas, Firebase.", url: "https://pawelstepien.github.io/Tetris/" }, { header: "Sit on Chair", imgUrl: "./img/portfolio/sitonchair/screen.png", description: "Pierwszy większy projekt wykonany na podstawie pliku .psd. Użyte technologie: HTML, CSS, JavaScript.", url: "https://pawelstepien.github.io/Sit-on-chair-v2.0/" }, { header: "Bezpieczny Bank", imgUrl: "./img/portfolio/bezpiecznybank/screen.png", description: "Projekt wykonany podstawie pliku .psd.", url: "https://pawelstepien.github.io/Bezpieczny-Bank/" }];
+
 document.addEventListener("DOMContentLoaded", function () {
     var Container = function (_React$Component) {
         _inherits(Container, _React$Component);
@@ -11255,14 +11257,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }, {
             key: 'render',
             value: function render() {
-
+                //create link component
                 return _react2.default.createElement(
                     'nav',
                     { className: 'navBar' },
                     _react2.default.createElement(
                         'figure',
                         { onClick: this.hamburgerClick },
-                        _react2.default.createElement('img', { src: './img/navigation/hamburger.png', className: 'hamburger', width: '60px', height: '60px' })
+                        _react2.default.createElement('img', { src: './img/navigation/hamburger2.png', className: 'hamburger', width: '60px', height: '60px' })
                     ),
                     _react2.default.createElement(
                         'ul',
@@ -11341,8 +11343,93 @@ document.addEventListener("DOMContentLoaded", function () {
         return SectionAbout;
     }(_react2.default.Component);
 
-    var SectionPortfolio = function (_React$Component7) {
-        _inherits(SectionPortfolio, _React$Component7);
+    var Slider = function (_React$Component7) {
+        _inherits(Slider, _React$Component7);
+
+        function Slider(props) {
+            _classCallCheck(this, Slider);
+
+            var _this8 = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, props));
+
+            _this8.counter = 0;
+            _this8.state = {
+                counter: 0
+            };
+            return _this8;
+        }
+
+        _createClass(Slider, [{
+            key: 'previousHandle',
+            value: function previousHandle(event) {
+                event.preventDefault();
+                if (this.state.counter <= 0) {
+                    this.setState({ counter: portfolioData.length - 1 });
+                } else {
+                    this.setState(function (state) {
+                        return { counter: state.counter - 1 };
+                    });
+                }
+            }
+        }, {
+            key: 'nextHandle',
+            value: function nextHandle(event) {
+                event.preventDefault();
+                if (this.state.counter >= portfolioData.length - 1) {
+                    this.setState({ counter: 0 });
+                } else {
+                    this.setState(function (state) {
+                        return { counter: state.counter + 1 };
+                    });
+                }
+            }
+        }, {
+            key: 'render',
+            value: function render() {
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'portfolio__slider' },
+                    _react2.default.createElement(
+                        'a',
+                        { href: '#', className: 'portfolio__slider--previousLink', onClick: this.previousHandle.bind(this) },
+                        _react2.default.createElement('img', { src: './img/portfolio/arrow-white.png', className: 'portfolio__slider--previous' })
+                    ),
+                    _react2.default.createElement(
+                        'article',
+                        { className: 'portfolio__slider--currentProject' },
+                        _react2.default.createElement(
+                            'h3',
+                            { className: 'portfolio__slider--header' },
+                            portfolioData[this.state.counter].header
+                        ),
+                        _react2.default.createElement(
+                            'figure',
+                            { className: 'portfolio__slider--imagewrap' },
+                            _react2.default.createElement(
+                                'a',
+                                { href: portfolioData[this.state.counter].url },
+                                _react2.default.createElement('img', { src: portfolioData[this.state.counter].imgUrl, className: 'portfolio__slider--image' })
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            { className: 'portfolio__slider--description' },
+                            portfolioData[this.state.counter].description
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { href: '#', className: 'portfolio__slider--previousLink', onClick: this.nextHandle.bind(this) },
+                        _react2.default.createElement('img', { src: './img/portfolio/arrow-white.png', className: 'portfolio__slider--next' })
+                    )
+                );
+            }
+        }]);
+
+        return Slider;
+    }(_react2.default.Component);
+
+    var SectionPortfolio = function (_React$Component8) {
+        _inherits(SectionPortfolio, _React$Component8);
 
         function SectionPortfolio(props) {
             _classCallCheck(this, SectionPortfolio);
@@ -11356,7 +11443,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return _react2.default.createElement(
                     'section',
                     { className: 'portfolio', 'data-sectionid': this.props.id },
-                    this.props.children
+                    _react2.default.createElement(Slider, null)
                 );
             }
         }]);
@@ -11364,8 +11451,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return SectionPortfolio;
     }(_react2.default.Component);
 
-    var SectionContact = function (_React$Component8) {
-        _inherits(SectionContact, _React$Component8);
+    var SectionContact = function (_React$Component9) {
+        _inherits(SectionContact, _React$Component9);
 
         function SectionContact(props) {
             _classCallCheck(this, SectionContact);
@@ -11387,8 +11474,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return SectionContact;
     }(_react2.default.Component);
 
-    var App = function (_React$Component9) {
-        _inherits(App, _React$Component9);
+    var App = function (_React$Component10) {
+        _inherits(App, _React$Component10);
 
         function App(props) {
             _classCallCheck(this, App);
@@ -11413,11 +11500,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         { id: 1 },
                         'About'
                     ),
-                    _react2.default.createElement(
-                        SectionPortfolio,
-                        { id: 2 },
-                        'Portfolio'
-                    ),
+                    _react2.default.createElement(SectionPortfolio, { id: 2 }),
                     _react2.default.createElement(
                         SectionContact,
                         { id: 3 },

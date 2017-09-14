@@ -4,14 +4,9 @@
   box-sizing: border-box; }
 
 @font-face {
-  font-family: "Raleway";
-  src: url("../font/Raleway-Regular.ttf"); }
-@font-face {
-  font-family: "Raleway-SemiBold";
-  src: url("../font/Raleway-SemiBold.ttf"); }
-@font-face {
-  font-family: "Raleway-ExtraBold";
-  src: url("../font/Raleway-ExtraBold.ttf"); }
+  font-family: 'Raleway';
+  src: local("Raleway"), local("Raleway-Regular"), url(https://fonts.gstatic.com/s/raleway/v11/yQiAaD56cjx1AooMTSghGfY6323mHUZFJMgTvxaG2iE.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; }
 .container {
   width: 100%;
   max-width: 1200px;
@@ -119,7 +114,9 @@ body {
       height: 100%;
       height: 60px;
       display: inline-block;
+      font-family: "Raleway", sans-serif;
       color: white;
+      text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
       font-weight: 700px;
       font-size: 30px;
       line-height: 60px;
@@ -131,9 +128,8 @@ body {
 
 .welcome, .about, .portfolio, .contact {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
+  padding-top: 30px;
+  box-sizing: border-box; }
 
 .welcome {
   background-color: steelblue; }
@@ -153,5 +149,48 @@ body {
 
 .hidden {
   display: none !important; }
+
+.portfolio__slider {
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.portfolio__slider--previous, .portfolio__slider--next {
+  width: 50px; }
+  @media screen and (min-width: 640px) {
+    .portfolio__slider--previous, .portfolio__slider--next {
+      width: 100px; } }
+  @media screen and (min-width: 1024px) {
+    .portfolio__slider--previous, .portfolio__slider--next {
+      width: 125px; } }
+
+.portfolio__slider--previous {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg); }
+
+.portfolio__slider--currentProject {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.portfolio__slider--imagewrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1vh; }
+
+.portfolio__slider--image {
+  max-height: 75vh;
+  max-width: 65vw; }
+
+.portfolio__slider--header {
+  font-size: 2.5em;
+  color: #FFF;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
