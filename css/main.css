@@ -172,12 +172,6 @@ body {
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
 
-.portfolio__slider--currentProject {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-
 .portfolio__slider--imagewrap {
   display: flex;
   justify-content: center;

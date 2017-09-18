@@ -11113,9 +11113,17 @@ var _reactDom = __webpack_require__(61);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactScroll = __webpack_require__(190);
+var _grid = __webpack_require__(199);
 
-var _reactScroll2 = _interopRequireDefault(_reactScroll);
+var _navigation = __webpack_require__(200);
+
+var _welcome = __webpack_require__(201);
+
+var _about = __webpack_require__(202);
+
+var _portfolio = __webpack_require__(203);
+
+var _contact = __webpack_require__(205);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11125,357 +11133,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var scroll = _reactScroll2.default.animateScroll;
-
-var portfolioData = [{ header: "Tetris", imgUrl: "./img/portfolio/tetris/screen.png", description: "Gra Tetris. Użyte technologie: JavaScript ES6, Canvas, Firebase.", url: "https://pawelstepien.github.io/Tetris/" }, { header: "Sit on Chair", imgUrl: "./img/portfolio/sitonchair/screen.png", description: "Pierwszy większy projekt wykonany na podstawie pliku .psd. Użyte technologie: HTML, CSS, JavaScript.", url: "https://pawelstepien.github.io/Sit-on-chair-v2.0/" }, { header: "Bezpieczny Bank", imgUrl: "./img/portfolio/bezpiecznybank/screen.png", description: "Projekt wykonany podstawie pliku .psd.", url: "https://pawelstepien.github.io/Bezpieczny-Bank/" }];
-
 document.addEventListener("DOMContentLoaded", function () {
-    var Container = function (_React$Component) {
-        _inherits(Container, _React$Component);
-
-        function Container(props) {
-            _classCallCheck(this, Container);
-
-            return _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this, props));
-        }
-
-        _createClass(Container, [{
-            key: 'render',
-            value: function render() {
-                return _react2.default.createElement(
-                    'div',
-                    { className: 'container' },
-                    this.props.children
-                );
-            }
-        }]);
-
-        return Container;
-    }(_react2.default.Component);
-
-    var Row = function (_React$Component2) {
-        _inherits(Row, _React$Component2);
-
-        function Row(props) {
-            _classCallCheck(this, Row);
-
-            return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).call(this, props));
-        }
-
-        _createClass(Row, [{
-            key: 'render',
-            value: function render() {
-                return _react2.default.createElement(
-                    'div',
-                    { className: 'row' },
-                    this.props.children
-                );
-            }
-        }]);
-
-        return Row;
-    }(_react2.default.Component);
-
-    var Col = function (_React$Component3) {
-        _inherits(Col, _React$Component3);
-
-        function Col(props) {
-            _classCallCheck(this, Col);
-
-            return _possibleConstructorReturn(this, (Col.__proto__ || Object.getPrototypeOf(Col)).call(this, props));
-        }
-
-        _createClass(Col, [{
-            key: 'render',
-            value: function render() {
-                var colSize = "col-" + this.props.size;
-                return _react2.default.createElement(
-                    'div',
-                    { className: colSize },
-                    this.props.children
-                );
-            }
-        }]);
-
-        return Col;
-    }(_react2.default.Component);
-
-    var NavBar = function (_React$Component4) {
-        _inherits(NavBar, _React$Component4);
-
-        function NavBar(props) {
-            _classCallCheck(this, NavBar);
-
-            return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
-        }
-
-        _createClass(NavBar, [{
-            key: 'scrollTo',
-            value: function scrollTo(e) {
-                var sectionPosition = document.querySelector("section[data-sectionid='" + e.currentTarget.dataset.sectionid + "']").getBoundingClientRect();
-                scroll.scrollMore(sectionPosition.top);
-            }
-        }, {
-            key: 'hamburgerCollapse',
-            value: function hamburgerCollapse() {
-                document.querySelector(".navBar .links").classList.add("hidden");
-                document.querySelector(".navBar .hamburger").classList.remove("hidden");
-            }
-        }, {
-            key: 'hamburgerExpand',
-            value: function hamburgerExpand() {
-                document.querySelector(".navBar .links").classList.remove("hidden");
-                document.querySelector(".navBar .hamburger").classList.add("hidden");
-            }
-        }, {
-            key: 'responsiveMenu',
-            value: function responsiveMenu() {
-                var _this5 = this;
-
-                var resposiveMenuEvent = window.addEventListener("resize", function (event) {
-                    if (window.innerWidth >= 640) {
-                        _this5.hamburgerExpand();
-                    } else {
-                        _this5.hamburgerCollapse();
-                    }
-                    console.log(event);
-                });
-            }
-        }, {
-            key: 'hamburgerClick',
-            value: function hamburgerClick() {
-                document.querySelector(".navBar .links").classList.toggle("hidden");
-            }
-        }, {
-            key: 'componentDidMount',
-            value: function componentDidMount() {
-                if (window.innerWidth >= 640) {
-                    this.hamburgerExpand();
-                }
-                this.responsiveMenu();
-            }
-        }, {
-            key: 'render',
-            value: function render() {
-                //create link component
-                return _react2.default.createElement(
-                    'nav',
-                    { className: 'navBar' },
-                    _react2.default.createElement(
-                        'figure',
-                        { onClick: this.hamburgerClick },
-                        _react2.default.createElement('img', { src: './img/navigation/hamburger2.png', className: 'hamburger', width: '60px', height: '60px' })
-                    ),
-                    _react2.default.createElement(
-                        'ul',
-                        { className: 'links hidden' },
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'welcomeLink', onClick: this.scrollTo, 'data-sectionid': 0 },
-                            'Welcome'
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'aboutLink', onClick: this.scrollTo, 'data-sectionid': 1 },
-                            'About me'
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'portfolioLink', onClick: this.scrollTo, 'data-sectionid': 2 },
-                            'Portfolio'
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            { className: 'contactLink', onClick: this.scrollTo, 'data-sectionid': 3 },
-                            'Contact'
-                        )
-                    )
-                );
-            }
-        }]);
-
-        return NavBar;
-    }(_react2.default.Component);
-
-    var SectionWelcome = function (_React$Component5) {
-        _inherits(SectionWelcome, _React$Component5);
-
-        function SectionWelcome(props) {
-            _classCallCheck(this, SectionWelcome);
-
-            return _possibleConstructorReturn(this, (SectionWelcome.__proto__ || Object.getPrototypeOf(SectionWelcome)).call(this, props));
-        }
-
-        _createClass(SectionWelcome, [{
-            key: 'render',
-            value: function render() {
-                return _react2.default.createElement(
-                    'section',
-                    { className: 'welcome', 'data-sectionid': this.props.id },
-                    this.props.children
-                );
-            }
-        }]);
-
-        return SectionWelcome;
-    }(_react2.default.Component);
-
-    var SectionAbout = function (_React$Component6) {
-        _inherits(SectionAbout, _React$Component6);
-
-        function SectionAbout(props) {
-            _classCallCheck(this, SectionAbout);
-
-            return _possibleConstructorReturn(this, (SectionAbout.__proto__ || Object.getPrototypeOf(SectionAbout)).call(this, props));
-        }
-
-        _createClass(SectionAbout, [{
-            key: 'render',
-            value: function render() {
-                return _react2.default.createElement(
-                    'section',
-                    { className: 'about', 'data-sectionid': this.props.id },
-                    this.props.children
-                );
-            }
-        }]);
-
-        return SectionAbout;
-    }(_react2.default.Component);
-
-    var Slider = function (_React$Component7) {
-        _inherits(Slider, _React$Component7);
-
-        function Slider(props) {
-            _classCallCheck(this, Slider);
-
-            var _this8 = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, props));
-
-            _this8.counter = 0;
-            _this8.state = {
-                counter: 0
-            };
-            return _this8;
-        }
-
-        _createClass(Slider, [{
-            key: 'previousHandle',
-            value: function previousHandle(event) {
-                event.preventDefault();
-                if (this.state.counter <= 0) {
-                    this.setState({ counter: portfolioData.length - 1 });
-                } else {
-                    this.setState(function (state) {
-                        return { counter: state.counter - 1 };
-                    });
-                }
-            }
-        }, {
-            key: 'nextHandle',
-            value: function nextHandle(event) {
-                event.preventDefault();
-                if (this.state.counter >= portfolioData.length - 1) {
-                    this.setState({ counter: 0 });
-                } else {
-                    this.setState(function (state) {
-                        return { counter: state.counter + 1 };
-                    });
-                }
-            }
-        }, {
-            key: 'render',
-            value: function render() {
-                return _react2.default.createElement(
-                    'div',
-                    { className: 'portfolio__slider' },
-                    _react2.default.createElement(
-                        'a',
-                        { href: '#', className: 'portfolio__slider--previousLink', onClick: this.previousHandle.bind(this) },
-                        _react2.default.createElement('img', { src: './img/portfolio/arrow-white.png', className: 'portfolio__slider--previous' })
-                    ),
-                    _react2.default.createElement(
-                        'article',
-                        { className: 'portfolio__slider--currentProject' },
-                        _react2.default.createElement(
-                            'h3',
-                            { className: 'portfolio__slider--header' },
-                            portfolioData[this.state.counter].header
-                        ),
-                        _react2.default.createElement(
-                            'figure',
-                            { className: 'portfolio__slider--imagewrap' },
-                            _react2.default.createElement(
-                                'a',
-                                { href: portfolioData[this.state.counter].url },
-                                _react2.default.createElement('img', { src: portfolioData[this.state.counter].imgUrl, className: 'portfolio__slider--image' })
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'p',
-                            { className: 'portfolio__slider--description' },
-                            portfolioData[this.state.counter].description
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'a',
-                        { href: '#', className: 'portfolio__slider--previousLink', onClick: this.nextHandle.bind(this) },
-                        _react2.default.createElement('img', { src: './img/portfolio/arrow-white.png', className: 'portfolio__slider--next' })
-                    )
-                );
-            }
-        }]);
-
-        return Slider;
-    }(_react2.default.Component);
-
-    var SectionPortfolio = function (_React$Component8) {
-        _inherits(SectionPortfolio, _React$Component8);
-
-        function SectionPortfolio(props) {
-            _classCallCheck(this, SectionPortfolio);
-
-            return _possibleConstructorReturn(this, (SectionPortfolio.__proto__ || Object.getPrototypeOf(SectionPortfolio)).call(this, props));
-        }
-
-        _createClass(SectionPortfolio, [{
-            key: 'render',
-            value: function render() {
-                return _react2.default.createElement(
-                    'section',
-                    { className: 'portfolio', 'data-sectionid': this.props.id },
-                    _react2.default.createElement(Slider, null)
-                );
-            }
-        }]);
-
-        return SectionPortfolio;
-    }(_react2.default.Component);
-
-    var SectionContact = function (_React$Component9) {
-        _inherits(SectionContact, _React$Component9);
-
-        function SectionContact(props) {
-            _classCallCheck(this, SectionContact);
-
-            return _possibleConstructorReturn(this, (SectionContact.__proto__ || Object.getPrototypeOf(SectionContact)).call(this, props));
-        }
-
-        _createClass(SectionContact, [{
-            key: 'render',
-            value: function render() {
-                return _react2.default.createElement(
-                    'section',
-                    { className: 'contact', 'data-sectionid': this.props.id },
-                    this.props.children
-                );
-            }
-        }]);
-
-        return SectionContact;
-    }(_react2.default.Component);
-
-    var App = function (_React$Component10) {
-        _inherits(App, _React$Component10);
+    var App = function (_React$Component) {
+        _inherits(App, _React$Component);
 
         function App(props) {
             _classCallCheck(this, App);
@@ -11487,22 +11147,22 @@ document.addEventListener("DOMContentLoaded", function () {
             key: 'render',
             value: function render() {
                 return _react2.default.createElement(
-                    Container,
+                    _grid.Container,
                     null,
-                    _react2.default.createElement(NavBar, null),
+                    _react2.default.createElement(_navigation.NavBar, null),
                     _react2.default.createElement(
-                        SectionWelcome,
+                        _welcome.SectionWelcome,
                         { id: 0 },
                         'Welcome'
                     ),
                     _react2.default.createElement(
-                        SectionAbout,
+                        _about.SectionAbout,
                         { id: 1 },
                         'About'
                     ),
-                    _react2.default.createElement(SectionPortfolio, { id: 2 }),
+                    _react2.default.createElement(_portfolio.SectionPortfolio, { id: 2 }),
                     _react2.default.createElement(
-                        SectionContact,
+                        _contact.SectionContact,
                         { id: 3 },
                         'Contact'
                     )
@@ -23974,6 +23634,582 @@ var Element = function (_React$Component) {
 ;
 
 module.exports = Helpers.Element(Element);
+
+/***/ }),
+/* 198 */,
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Col = exports.Row = exports.Container = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Container = function (_React$Component) {
+    _inherits(Container, _React$Component);
+
+    function Container(props) {
+        _classCallCheck(this, Container);
+
+        return _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this, props));
+    }
+
+    _createClass(Container, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "container" },
+                this.props.children
+            );
+        }
+    }]);
+
+    return Container;
+}(_react2.default.Component);
+
+var Row = function (_React$Component2) {
+    _inherits(Row, _React$Component2);
+
+    function Row(props) {
+        _classCallCheck(this, Row);
+
+        return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).call(this, props));
+    }
+
+    _createClass(Row, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "row" },
+                this.props.children
+            );
+        }
+    }]);
+
+    return Row;
+}(_react2.default.Component);
+
+var Col = function (_React$Component3) {
+    _inherits(Col, _React$Component3);
+
+    function Col(props) {
+        _classCallCheck(this, Col);
+
+        return _possibleConstructorReturn(this, (Col.__proto__ || Object.getPrototypeOf(Col)).call(this, props));
+    }
+
+    _createClass(Col, [{
+        key: "render",
+        value: function render() {
+            var colSize = "col-" + this.props.size;
+            return _react2.default.createElement(
+                "div",
+                { className: colSize },
+                this.props.children
+            );
+        }
+    }]);
+
+    return Col;
+}(_react2.default.Component);
+
+exports.Container = Container;
+exports.Row = Row;
+exports.Col = Col;
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.NavLink = exports.NavBar = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactScroll = __webpack_require__(190);
+
+var _reactScroll2 = _interopRequireDefault(_reactScroll);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var scroll = _reactScroll2.default.animateScroll;
+
+var NavLink = function (_React$Component) {
+    _inherits(NavLink, _React$Component);
+
+    function NavLink(props) {
+        _classCallCheck(this, NavLink);
+
+        return _possibleConstructorReturn(this, (NavLink.__proto__ || Object.getPrototypeOf(NavLink)).call(this, props));
+    }
+
+    _createClass(NavLink, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'li',
+                { onClick: this.props.scrollTo, 'data-sectionid': this.props.sectionId },
+                this.props.children
+            );
+        }
+    }]);
+
+    return NavLink;
+}(_react2.default.Component);
+
+var NavBar = function (_React$Component2) {
+    _inherits(NavBar, _React$Component2);
+
+    function NavBar(props) {
+        _classCallCheck(this, NavBar);
+
+        return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+    }
+
+    _createClass(NavBar, [{
+        key: 'scrollTo',
+        value: function scrollTo(e) {
+            var sectionPosition = document.querySelector("section[data-sectionid='" + e.currentTarget.dataset.sectionid + "']").getBoundingClientRect();
+            scroll.scrollMore(sectionPosition.top);
+        }
+    }, {
+        key: 'hamburgerCollapse',
+        value: function hamburgerCollapse() {
+            document.querySelector(".navBar .links").classList.add("hidden");
+            document.querySelector(".navBar .hamburger").classList.remove("hidden");
+        }
+    }, {
+        key: 'hamburgerExpand',
+        value: function hamburgerExpand() {
+            document.querySelector(".navBar .links").classList.remove("hidden");
+            document.querySelector(".navBar .hamburger").classList.add("hidden");
+        }
+    }, {
+        key: 'responsiveMenu',
+        value: function responsiveMenu() {
+            var _this3 = this;
+
+            var resposiveMenuEvent = window.addEventListener("resize", function (event) {
+                if (window.innerWidth >= 640) {
+                    _this3.hamburgerExpand();
+                } else {
+                    _this3.hamburgerCollapse();
+                }
+                console.log(event);
+            });
+        }
+    }, {
+        key: 'hamburgerClick',
+        value: function hamburgerClick() {
+            document.querySelector(".navBar .links").classList.toggle("hidden");
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            if (window.innerWidth >= 640) {
+                this.hamburgerExpand();
+            }
+            this.responsiveMenu();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'nav',
+                { className: 'navBar' },
+                _react2.default.createElement(
+                    'figure',
+                    { onClick: this.hamburgerClick },
+                    _react2.default.createElement('img', { src: './img/navigation/hamburger2.png', className: 'hamburger', width: '60px', height: '60px' })
+                ),
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'links hidden' },
+                    _react2.default.createElement(
+                        NavLink,
+                        { scrollTo: this.scrollTo.bind(this), sectionId: 0 },
+                        'Welcome'
+                    ),
+                    _react2.default.createElement(
+                        NavLink,
+                        { scrollTo: this.scrollTo.bind(this), sectionId: 1 },
+                        'About me'
+                    ),
+                    _react2.default.createElement(
+                        NavLink,
+                        { scrollTo: this.scrollTo.bind(this), sectionId: 2 },
+                        'Portfolio'
+                    ),
+                    _react2.default.createElement(
+                        NavLink,
+                        { scrollTo: this.scrollTo.bind(this), sectionId: 3 },
+                        'Contact'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return NavBar;
+}(_react2.default.Component);
+
+exports.NavBar = NavBar;
+exports.NavLink = NavLink;
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SectionWelcome = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(61);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SectionWelcome = function (_React$Component) {
+    _inherits(SectionWelcome, _React$Component);
+
+    function SectionWelcome(props) {
+        _classCallCheck(this, SectionWelcome);
+
+        return _possibleConstructorReturn(this, (SectionWelcome.__proto__ || Object.getPrototypeOf(SectionWelcome)).call(this, props));
+    }
+
+    _createClass(SectionWelcome, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'section',
+                { className: 'welcome', 'data-sectionid': this.props.id },
+                this.props.children
+            );
+        }
+    }]);
+
+    return SectionWelcome;
+}(_react2.default.Component);
+
+exports.SectionWelcome = SectionWelcome;
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SectionAbout = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(61);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SectionAbout = function (_React$Component) {
+    _inherits(SectionAbout, _React$Component);
+
+    function SectionAbout(props) {
+        _classCallCheck(this, SectionAbout);
+
+        return _possibleConstructorReturn(this, (SectionAbout.__proto__ || Object.getPrototypeOf(SectionAbout)).call(this, props));
+    }
+
+    _createClass(SectionAbout, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'section',
+                { className: 'about', 'data-sectionid': this.props.id },
+                this.props.children
+            );
+        }
+    }]);
+
+    return SectionAbout;
+}(_react2.default.Component);
+
+exports.SectionAbout = SectionAbout;
+
+/***/ }),
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SectionPortfolio = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(61);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _portfoliodata = __webpack_require__(204);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Slider = function (_React$Component) {
+    _inherits(Slider, _React$Component);
+
+    function Slider(props) {
+        _classCallCheck(this, Slider);
+
+        var _this = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, props));
+
+        _this.counter = 0;
+        _this.state = {
+            counter: 0
+        };
+        return _this;
+    }
+
+    _createClass(Slider, [{
+        key: 'previousHandle',
+        value: function previousHandle(event) {
+            event.preventDefault();
+            if (this.state.counter <= 0) {
+                this.setState({ counter: _portfoliodata.portfolioData.length - 1 });
+            } else {
+                this.setState(function (state) {
+                    return { counter: state.counter - 1 };
+                });
+            }
+        }
+    }, {
+        key: 'nextHandle',
+        value: function nextHandle(event) {
+            event.preventDefault();
+            if (this.state.counter >= _portfoliodata.portfolioData.length - 1) {
+                this.setState({ counter: 0 });
+            } else {
+                this.setState(function (state) {
+                    return { counter: state.counter + 1 };
+                });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'portfolio__slider' },
+                _react2.default.createElement(
+                    'a',
+                    { href: '#', className: 'portfolio__slider--previousLink', onClick: this.previousHandle.bind(this) },
+                    _react2.default.createElement('img', { src: './img/portfolio/arrow-white.png', className: 'portfolio__slider--previous' })
+                ),
+                _react2.default.createElement(
+                    'article',
+                    { className: 'portfolio__slider--currentProject' },
+                    _react2.default.createElement(
+                        'h3',
+                        { className: 'portfolio__slider--header' },
+                        _portfoliodata.portfolioData[this.state.counter].header
+                    ),
+                    _react2.default.createElement(
+                        'figure',
+                        { className: 'portfolio__slider--imagewrap' },
+                        _react2.default.createElement(
+                            'a',
+                            { href: _portfoliodata.portfolioData[this.state.counter].url, target: '_blank' },
+                            _react2.default.createElement('img', { src: _portfoliodata.portfolioData[this.state.counter].imgUrl, className: 'portfolio__slider--image' })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        { className: 'portfolio__slider--description' },
+                        _portfoliodata.portfolioData[this.state.counter].description
+                    )
+                ),
+                _react2.default.createElement(
+                    'a',
+                    { href: '#', className: 'portfolio__slider--previousLink', onClick: this.nextHandle.bind(this) },
+                    _react2.default.createElement('img', { src: './img/portfolio/arrow-white.png', className: 'portfolio__slider--next' })
+                )
+            );
+        }
+    }]);
+
+    return Slider;
+}(_react2.default.Component);
+
+var SectionPortfolio = function (_React$Component2) {
+    _inherits(SectionPortfolio, _React$Component2);
+
+    function SectionPortfolio(props) {
+        _classCallCheck(this, SectionPortfolio);
+
+        return _possibleConstructorReturn(this, (SectionPortfolio.__proto__ || Object.getPrototypeOf(SectionPortfolio)).call(this, props));
+    }
+
+    _createClass(SectionPortfolio, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'section',
+                { className: 'portfolio', 'data-sectionid': this.props.id },
+                _react2.default.createElement(Slider, null)
+            );
+        }
+    }]);
+
+    return SectionPortfolio;
+}(_react2.default.Component);
+
+exports.SectionPortfolio = SectionPortfolio;
+
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var portfolioData = [{ header: "Tetris", imgUrl: "./img/portfolio/tetris/screen.png", description: "Gra Tetris. Użyte technologie: JavaScript ES6, Canvas, Firebase.", url: "https://pawelstepien.github.io/Tetris/" }, { header: "Sit on Chair", imgUrl: "./img/portfolio/sitonchair/screen.png", description: "Pierwszy większy projekt wykonany na podstawie pliku .psd. Użyte technologie: HTML, CSS, JavaScript.", url: "https://pawelstepien.github.io/Sit-on-chair-v2.0/" }, { header: "Bezpieczny Bank", imgUrl: "./img/portfolio/bezpiecznybank/screen.png", description: "Projekt wykonany podstawie pliku .psd.", url: "https://pawelstepien.github.io/Bezpieczny-Bank/" }];
+
+exports.portfolioData = portfolioData;
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SectionContact = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(20);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(61);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SectionContact = function (_React$Component) {
+    _inherits(SectionContact, _React$Component);
+
+    function SectionContact(props) {
+        _classCallCheck(this, SectionContact);
+
+        return _possibleConstructorReturn(this, (SectionContact.__proto__ || Object.getPrototypeOf(SectionContact)).call(this, props));
+    }
+
+    _createClass(SectionContact, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'section',
+                { className: 'contact', 'data-sectionid': this.props.id },
+                this.props.children
+            );
+        }
+    }]);
+
+    return SectionContact;
+}(_react2.default.Component);
+
+exports.SectionContact = SectionContact;
 
 /***/ })
 /******/ ]);
